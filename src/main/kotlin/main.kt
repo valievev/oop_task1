@@ -18,7 +18,8 @@ data class Post(
     val canPin: Boolean = false,
     val canEdit: Boolean = true,
     val comment: comment? = null,
-    val originalPost: Post? = null
+    val originalPost: Post? = null,
+    var attachment: Array<Attachment> = emptyArray<Attachment>()
 ) {
     override fun toString(): String {
         var str: String = "$id)\t$text"
@@ -89,4 +90,23 @@ fun main() {
     WallService.updatePost(newPost2)
 
     WallService.printPosts()
+
+//    var video1 = AttachmentVideo(
+//        video = null
+//    )
+//    var photo1 = AttachmentPhoto(
+//        photo = null
+//    )
+//    var file1 = AttachmentFile(
+//        file = null
+//    )
+//    post4.attachment += video1
+//    post4.attachment += photo1
+//    post4.attachment += file1
+//
+//    for(item in post4.attachment){
+//        if(item is AttachmentVideo){
+//            println(item.type)
+//        }
+//    }
 }
