@@ -1,6 +1,4 @@
-interface Attachment {
-    val type: String
-}
+sealed class Attachment(val type: String)
 
 interface Image {
     val height: Int
@@ -8,7 +6,7 @@ interface Image {
     val url: String
 }
 
-interface AttachmentPhoto {
+interface Photo {
     val id: Int
     val album_id: Int
     val owner_id: Int
@@ -17,7 +15,7 @@ interface AttachmentPhoto {
     val date: Int
 }
 
-interface AttachmentAudio {
+interface Audio {
     val id: Int
     val owner_id: Int
     val artist: String
@@ -27,7 +25,7 @@ interface AttachmentAudio {
     val album_id: Int
 }
 
-interface AttachmentVideo {
+interface Video {
     val id: Int
     val owner_id: Int
     val title: String
@@ -38,7 +36,7 @@ interface AttachmentVideo {
     val views: Int
 }
 
-interface AttachmentFile {
+interface File {
     val id: Int
     val owner_id: Int
     val title: String
@@ -49,7 +47,7 @@ interface AttachmentFile {
     val type: Int
 }
 
-interface AttachmentSticker {
+interface Sticker {
     val inner_type: String
     val sticker_id: Int
     val product_id: Int
@@ -57,9 +55,8 @@ interface AttachmentSticker {
     val image: Image
 }
 
-
-class Photo(override val type: String, val photo: AttachmentPhoto?) : Attachment
-class Audio(override val type: String, val audio: AttachmentAudio?) : Attachment
-class Video(override val type: String, val video: AttachmentVideo?) : Attachment
-class File(override val type: String, val file: AttachmentFile?) : Attachment
-class Sticker(override val type: String, val sticker: AttachmentSticker?) : Attachment
+data class AttachmentPhoto(val photo: Photo?) : Attachment("photo")
+data class AttachmentAudio(val audio: Audio?) : Attachment("audio")
+data class AttachmentVideo(val video: Video?) : Attachment("video")
+data class AttachmentFile(val file: File?) : Attachment("file")
+data class AttachmentSticker(val sticker: Sticker?) : Attachment("sticker")

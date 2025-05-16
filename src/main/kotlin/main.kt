@@ -91,14 +91,22 @@ fun main() {
 
     WallService.printPosts()
 
-//    var video1: Video = Video(
-//        type = "video",
+//    var video1 = AttachmentVideo(
 //        video = null
 //    )
-//    var photo1: Photo = Photo(
-//        type = "photo",
+//    var photo1 = AttachmentPhoto(
 //        photo = null
+//    )
+//    var file1 = AttachmentFile(
+//        file = null
 //    )
 //    post4.attachment += video1
 //    post4.attachment += photo1
+//    post4.attachment += file1
+//
+//    for(item in post4.attachment){
+//        if(item is AttachmentVideo){
+//            println(item.type)
+//        }
+//    }
 }
